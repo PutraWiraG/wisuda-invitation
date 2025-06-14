@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Birthday Party</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/countdown/2.6.0/countdown.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <link rel="icon" href="asset/favicon.png" type="image/x-icon">
+
+
+  </head>
+  <body class="flex flex-col items-center relative">
+
+    <audio id="background-audio">
+        <source src="asset/backsound.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <nav class="navbar-bottom bg-[#9360EE]/30 backdrop-blur-md backdrop-saturate-150 absolute z-40 w-[80vw] md:w-[55vw] lg:max-w-[450px] bottom-5 rounded-full overflow-x-auto hide-scrollbar hidden">
+        <div class="flex items-center whitespace-nowrap w-max">
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-home text-sm"></i>
+                <p class="text-[12px] font-medium">Opening</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="welcome">
+                <i class="fas fa-heart text-sm"></i>
+                <p class="text-[12px] font-medium">Welcome</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="galeri">
+                <i class="fas fa-image text-sm"></i>
+                <p class="text-[12px] font-medium">Galeri</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="event">
+                <i class="fas fa-clock text-sm"></i>
+                <p class="text-[12px] font-medium">Event</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="maps">
+                <i class="fas fa-map-signs text-sm"></i>
+                <p class="text-[12px] font-medium">Maps</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="opening">
+                <i class="fas fa-comment-dots text-sm"></i>
+                <p class="text-[12px] font-medium">RSVP</p>
+            </div>
+            <div class="box text-white px-5 py-2 rounded-full flex flex-col items-center justify-center w-[100px] h-fit" data-target="thanks">
+                <i class="fas fa-star text-sm"></i>
+                <p class="text-[12px] font-medium">Thanks</p>
+            </div>
+        </div>        
+    </nav>
+    
+    <section id="section-opening" class="opening relative w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center" style="background: radial-gradient(circle, #D1B3FF 5%, #9360EE 95%);">
+
+        <img src="/asset/cloud.png" class="imgLeft absolute top-0 left-0 w-[50%] mt-[-50px] ms-[-60px] md:mt-[-70px] md:ms-[-70px]">
+        <img src="/asset/cloud.png" class="imgRight absolute top-0 right-0 w-[50%] mt-[-10px] me-[-80px] md:mt-[-10px] md:me-[-120px]">
+        <img src="/asset/kids-top.png" class="imgLeft absolute top-[2%] md:top-[5%] left-0 z-10 w-[40%] md:w-[30%]">
+        
+        <div class="content h-[98vh] w-[96%] border border-[#FFFF] flex flex-col justify-center items-center">
+            <div class="text-center">
+                <p class="text-cherry text-5xl md:text-7xl text-white text-outline">Happy Graduation</p>
+                <p class="text-poppins text-md text-white mt-2">TK/KB Muslimat</p>
+            </div>
+    
+            <div class="invitation mt-[40px] mb-[40px] bg-[rgba(255,255,255,0.7)] backdrop-blur-xl py-4 px-10 text-center rounded-md delay-300 z-40" data-anim="zoom-in">
+                <p class="text-sm text-[#000]">Kepada Yth.</p>
+                <h5 class="font-bold" id="tamu-undangan">Tamu Undangan</h5>
+            </div>  
+
+            <button class="p-2 bg-[#74512D] text-[12px] rounded-full font-bold text-poppins text-white btn-open cursor-pointer" style="z-index: 100;">Open Invitation</button>
+        </div>
+
+        <img src="/asset/kids-graduation.png" class="absolute bottom-0 z-10 w-100 lg:w-[85%] mb-[-45px]">
+        <img src="/asset/cloud-bottom.png" class="absolute bottom-0">
+
+    </section>
+
+    <section id="section-event" class="event absolute top-0 w-full md:w-[60vw] lg:max-w-[500px] min-h-screen overflow-hidden flex justify-center items-center opacity-0 pointer-events-none" style="background: radial-gradient(circle, #D1B3FF 5%, #9360EE 95%);">
+
+        <img src="/asset/cloud.png" class="imgLeft absolute top-0 left-0 w-[50%] mt-[-50px] ms-[-60px] md:mt-[-70px] md:ms-[-70px]">
+        <img src="/asset/cloud.png" class="imgRight absolute top-0 right-0 w-[50%] mt-[-10px] me-[-80px] md:mt-[-10px] md:me-[-120px]">
+        <img src="/asset/kids-top.png" class="imgLeft absolute top-[2%] md:top-[5%] left-0 z-10 w-[40%] md:w-[30%]">
+
+        <p class="text-cherry">Hallo Wordl</p>
+
+        <img src="/asset/kids-graduation.png" class="absolute bottom-0 z-10 w-100 lg:w-[85%] md:mb-[-20px]">
+        <img src="/asset/cloud-bottom.png" class="absolute bottom-0">
+
+    </section>
+
+
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    
+    <script>
+        AOS.init({
+            once: false, // Atur ke false agar animasi bisa diulang tiap kali muncul
+        });
+    </script>
+    <script src="script/script.js"></script>
+    
+  </body>
+</html>
