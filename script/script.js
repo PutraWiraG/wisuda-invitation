@@ -1,11 +1,12 @@
 const boxes = document.querySelectorAll('.box');
 const sections = {
     opening: document.getElementById('section-opening'),
-    // welcome: document.getElementById('section-welcome'),
+    welcome: document.getElementById('section-welcome'),
     event: document.getElementById('section-event'),
-    // maps: document.getElementById('section-maps'),
-    // galeri: document.getElementById('section-galeri'),
-    // thanks: document.getElementById('section-thanks'),
+    maps: document.getElementById('section-maps'),
+    galeri: document.getElementById('section-galeri'),
+    thanks: document.getElementById('section-thanks'),
+    rsvp: document.getElementById('section-rsvp'),
 };
 
 // Fungsi untuk aktifkan section & menu
@@ -55,6 +56,18 @@ function activateSection(target) {
             void el.offsetWidth; // force reflow
             el.classList.add('zoom-out');
         });
+        const fadeLeft = selectedSection.querySelectorAll('[data-anim="fade-left"]');
+        fadeLeft.forEach(el => {
+            el.classList.remove('fade-left');
+            void el.offsetWidth; // force reflow
+            el.classList.add('fade-left');
+        });
+        const fadeRight = selectedSection.querySelectorAll('[data-anim="fade-right"]');
+        fadeRight.forEach(el => {
+            el.classList.remove('fade-right');
+            void el.offsetWidth; // force reflow
+            el.classList.add('fade-right');
+        });
 
     }
 }
@@ -84,7 +97,7 @@ btnOpen.addEventListener("click", () => {
     btnOpen.classList.add('hidden');
 
     // Aktifkan langsung section welcome
-    activateSection('event');
+    activateSection('welcome');
 });
 
 document.addEventListener('visibilitychange', () => {
